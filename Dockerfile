@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:5.6-apache
 MAINTAINER Fernando Barbosa <fbcbarbosa@gmail.com>
 ARG NR_INSTALL_KEY
 
@@ -16,11 +16,11 @@ RUN wget -r -nd --no-parent -Alinux.tar.gz \
 ENV NR_INSTALL_SILENT true
 RUN bash newrelic-install install
 
-WORKDIR /
 RUN pip install newrelic-plugin-agent
 RUN mkdir -p /var/log/newrelic
 RUN mkdir -p /var/run/newrelic
 
+WORKDIR /var/www/html
 ENV YOURLS_VERSION 1.7.1
 RUN curl -o /tmp/YOURLS-$YOURLS_VERSION.tar.gz -L https://github.com/YOURLS/YOURLS/archive/$YOURLS_VERSION.tar.gz && \
     tar -zxf /tmp/YOURLS-$YOURLS_VERSION.tar.gz --strip-components=1 && \
