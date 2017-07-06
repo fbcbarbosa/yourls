@@ -16,13 +16,13 @@ RUN apt-get update && apt-get -yqq install \
     && tar -xzf newrelic-php*.tar.gz --strip=1 && \
     bash newrelic-install install && \
     pip install newrelic-plugin-agent && \
-    sed -i '/^newrelic.appname/c\newrelic.appname = "${NR_APP_NAME}"' \
+    sed -i "/^newrelic.appname/c\newrelic.appname = \"$NR_APP_NAME\"" \
     /usr/local/etc/php/conf.d/newrelic.ini && \
     mkdir -p /var/log/newrelic && \
     mkdir -p /var/run/newrelic
 
 # Install YOURLS
-ENV YOURLS_VERSION 1.7.3
+ENV YOURLS_VERSION 1.7.2
 WORKDIR /var/www/html
 RUN curl -o /tmp/YOURLS-$YOURLS_VERSION.tar.gz -L https://github.com/YOURLS/YOURLS/archive/$YOURLS_VERSION.tar.gz && \
     tar -zxf /tmp/YOURLS-$YOURLS_VERSION.tar.gz --strip-components=1 && \
