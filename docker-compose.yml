@@ -1,0 +1,35 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+      args:
+        - NR_INSTALL_KEY
+    ports:
+      - "8080:80"
+    links:
+      - db
+    environment:
+      - YOURLS_DB_USER=yourls
+      - YOURLS_DB_PASS=supersecureyo
+      - YOURLS_DB_NAME=yourls
+      - YOURLS_DB_HOST=db
+      - YOURLS_DEBUG=false
+      - YOURLS_USERS=admin:admin
+      - YOURLS_SITE=http://127.0.0.1
+      - PRIVATE=true
+
+  db:
+    ports:
+      - "3306:3306"
+    image: mysql:5.6.26
+    environment:
+      - MYSQL_ROOT_PASSWORD=coolpassword
+      - MYSQL_DATABASE=yourls
+      - MYSQL_USER=yourls
+      - MYSQL_PASSWORD=supersecureyo
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
