@@ -14,7 +14,6 @@ services:
       - YOURLS_DEBUG=false
       - YOURLS_USERS=admin:admin
       - YOURLS_SITE=http://127.0.0.1
-      - PRIVATE=true
 
   db:
     ports:
