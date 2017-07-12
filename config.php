@@ -59,8 +59,8 @@ foreach (explode(',', getenv('YOURLS_USERS')) as $creds) {
   $yourls_user_passwords[$name] = $pass;
 }
 
-/** Living on the edge. Don't encrypt passwords. */
-define('YOURLS_NO_HASH_PASSWORD', true);
+/** Encrypt passwords by default. */
+define('YOURLS_NO_HASH_PASSWORD', getenv('YOURLS_NO_HASH_PASSWORD') ?: 'false');
 
 /**
 * Reserved keywords (so that generated URLs won't match them)

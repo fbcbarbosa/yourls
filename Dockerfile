@@ -1,7 +1,7 @@
-FROM php:7.0-apache
-MAINTAINER Alex Kern <alex@usepavlov.com>
+FROM php:7.1.7-apache
+MAINTAINER Fernando Barbosa <fbcbarbisa@gnauk.com>
 
-ENV YOURLS_VERSION 1.7.1
+ENV YOURLS_VERSION 1.7.2
 RUN curl -o /tmp/YOURLS-$YOURLS_VERSION.tar.gz -L https://github.com/YOURLS/YOURLS/archive/$YOURLS_VERSION.tar.gz && \
     tar -zxf /tmp/YOURLS-$YOURLS_VERSION.tar.gz --strip-components=1 && \
     rm /tmp/YOURLS-$YOURLS_VERSION.tar.gz && \
