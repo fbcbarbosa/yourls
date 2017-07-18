@@ -1,5 +1,5 @@
 FROM php:7.1.7-apache
-MAINTAINER Fernando Barbosa <fbcbarbisa@gnauk.com>
+MAINTAINER Fernando Barbosa <fbcbarbosa@gmail.com>
 
 ENV YOURLS_VERSION 1.7.2
 RUN curl -o /tmp/YOURLS-$YOURLS_VERSION.tar.gz -L https://github.com/YOURLS/YOURLS/archive/$YOURLS_VERSION.tar.gz && \
